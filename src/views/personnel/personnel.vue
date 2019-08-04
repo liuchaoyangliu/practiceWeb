@@ -68,12 +68,12 @@
             <template slot-scope="scope">
               <el-button
                 size="mini"
-                @click="editor(scope.row.workNumber)">编辑
+                @click="editor(scope.row.id)">编辑
               </el-button>
               <el-button
                 size="mini"
                 type="danger"
-                @click="deleteUser(scope.row.workNumber)">删除</el-button>
+                @click="deleteUser(scope.row.id)">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -111,7 +111,7 @@
     name: 'plan',
     data (){
       return {
-        workNumber: '',
+        id: '',
         loading: false,
         search: '',
         filters: {
@@ -203,12 +203,12 @@
 
       },
 
-      deleteUser(data){
+      SignIn(data){
         let params = {
-          deleteUser: data,
+          SignIn: data,
         };
         console.log(data);
-        API.deleteUser(params);
+        API.SignIn(params);
         this.$Message.success("删除成功");
         this.getDataOrSearch()
       },

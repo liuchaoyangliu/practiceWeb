@@ -46,12 +46,12 @@
         type: Boolean,
         default: false
       },
-      workNumber: ''
+      id: ''
     },
     data() {
       return {
         form: {
-          workNumber: '',
+          id: '',
           name: '',
           age: '1',
           sex: '',
@@ -69,10 +69,10 @@
     created(){
       let _this = this;
       let params = {
-        workNumber: _this.workNumber,
+        id: _this.id,
       };
       API.getUser(params).then(function (data) {
-        _this.form.workNumber = data.workNumber;
+        _this.form.id = data.id;
         _this.form.name = data.name;
         _this.form.age = data.age;
         _this.form.sex = data.sex;
@@ -101,11 +101,11 @@
       handleClose() {
         this.$emit('update:visible', false);
       },
-      updateUser(){
+      updateInstitutions(){
         console.log(this.form);
 
         let params = {
-          workNumber: this.form.workNumber,
+          id: this.form.id,
           name: this.form.name,
           age: this.form.age,
           sex: this.form.sex,
@@ -117,7 +117,7 @@
           salary: this.form.salary,
           flag: this.form.flag
         };
-        API.updateUser(params);
+        API.updateInstitutions(params);
 
         this.$Message.success("修改成功");
       }

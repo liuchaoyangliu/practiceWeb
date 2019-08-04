@@ -87,7 +87,7 @@
     name: 'plan',
     data (){
       return {
-        workNumber: '',
+        id: '',
         loading: false,
         search: '',
         filters: {

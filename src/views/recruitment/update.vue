@@ -7,7 +7,7 @@
     <el-form :model="form" label-width="70px">
 
       <el-form-item label="工号：" >
-        <el-input v-model="form.workNumber" autocomplete="off" readonly="true"></el-input>
+        <el-input v-model="form.id" autocomplete="off" readonly="true"></el-input>
       </el-form-item>
       <el-form-item label="姓名：" >
         <el-input v-model="form.name" autocomplete="off" ></el-input>
@@ -53,12 +53,12 @@
         type: Boolean,
         default: false
       },
-      workNumber: ''
+      id: ''
     },
     data() {
       return {
         form: {
-          workNumber: '',
+          id: '',
           name: '',
           age: '1',
           sex: '',
@@ -81,10 +81,10 @@
       async initData(){
         let _this = this;
         let params = {
-          workNumber: _this.workNumber,
+          id: _this.id,
         };
         await API.getUser(params).then(function (data) {
-          _this.form.workNumber = data.workNumber;
+          _this.form.id = data.id;
           _this.form.name = data.name;
           _this.form.age = data.age;
           _this.form.sex = data.sex;
@@ -109,11 +109,11 @@
         this.$emit('update:visible', false);
         this.initData();
       },
-      async updateUser(){
+      async updateInstitutions(){
         console.log(this.form);
 
         let params = {
-          workNumber: this.form.workNumber,
+          id: this.form.id,
           name: this.form.name,
           age: this.form.age,
           sex: this.form.sex,
@@ -125,7 +125,7 @@
           salary: this.form.salary,
           flag: this.form.flag
         };
-        await API.updateUser(params);
+        await API.updateInstitutions(params);
         this.$Message.success("修改成功");
         await this.initData();
       }

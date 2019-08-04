@@ -77,7 +77,7 @@ export default {
     return API.GET('/user/searchList', params)
   },
 
-  deleteUser: params => {
+  SignIn: params => {
     return API.GET('/user/deleteUser', params)
   },
 
@@ -119,6 +119,27 @@ export default {
 
   acceptedUser: params => {
     return API.GET('/user/acceptedUser', params)
+  },
+
+  getInstitutionsList: params => {
+    return API.GET('/institutions/getInstitutionsList', params)
+  },
+
+  updateInstitutions: params => {
+    return API.POST('/institutions/updateInstitutions', params)
+  },
+
+
+  removeInstitutions: params => {
+    return API.GET('/institutions/removeInstitutions', params)
+  },
+
+  getAttendanceList: params => {
+    return API.GET('/attendance/getAttendanceList', params)
+  },
+
+  updateAttendance: params => {
+    return API.POST('/attendance/updateAttendance', params)
   }
 
 }

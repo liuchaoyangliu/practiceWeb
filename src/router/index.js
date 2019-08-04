@@ -15,10 +15,13 @@ import Attendance from '@/views/attendance/attendance.vue'
 import SystemLog from '@/views/systemLog/systemLog.vue'
 import Recruitment from '@/views/recruitment/recruitment.vue'
 
-// 懒加载方式，当路由被访问的时候才加载对应组件
-const Login = resolve => require(['@/views/login'], resolve)
 
-Vue.use(Router)
+import PopupWindow from '@/views/popupWindow/mission.vue'
+
+// 懒加载方式，当路由被访问的时候才加载对应组件
+const Login = resolve => require(['@/views/login'], resolve);
+
+Vue.use(Router);
 
 let router = new Router({
   routes: [
@@ -86,6 +89,18 @@ let router = new Router({
           iconCls: 'iconfont icon-home', // 图标样式class
           menuShow: true
         },
+        // {
+        //   path: '/institutions/institutions',
+        //   name: '机构管理',
+        //   components: {
+        //     default: Institutions,
+        //     top: TopNav,
+        //     aside: LeftNav
+        //   },
+        //   leaf: true, // 只有一个节点
+        //   iconCls: 'iconfont icon-home', // 图标样式class
+        //   menuShow: true
+        // },
         {
           path: '/institutions/institutions',
           name: '机构管理',
@@ -96,13 +111,26 @@ let router = new Router({
           },
           leaf: true, // 只有一个节点
           iconCls: 'iconfont icon-home', // 图标样式class
-          menuShow: true
+          menuShow: true,
         },
+
         {
           path: '/attendance/attendance',
           name: '考勤管理',
           components: {
             default: Attendance,
+            top: TopNav,
+            aside: LeftNav
+          },
+          leaf: true, // 只有一个节点
+          iconCls: 'iconfont icon-home', // 图标样式class
+          menuShow: true
+        },
+        {
+          path: '/popupWindow/popupWindow',
+          name: '弹窗',
+          components: {
+            default: PopupWindow,
             top: TopNav,
             aside: LeftNav
           },
