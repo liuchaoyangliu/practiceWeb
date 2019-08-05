@@ -123,6 +123,7 @@
         } else {
           this.$refs.multipleTable.clearSelection();
         }
+        this.$Message.success("删除成功");
         this.getData();
       },
       handleSelectionChange(val) {

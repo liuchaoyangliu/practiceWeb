@@ -14,7 +14,7 @@ import Personnel from '@/views/personnel/personnel.vue'
 import Attendance from '@/views/attendance/attendance.vue'
 import SystemLog from '@/views/systemLog/systemLog.vue'
 import Recruitment from '@/views/recruitment/recruitment.vue'
-
+import SignIn from '@/views/attendance/signIn.vue'
 
 import PopupWindow from '@/views/popupWindow/mission.vue'
 
@@ -89,18 +89,6 @@ let router = new Router({
           iconCls: 'iconfont icon-home', // 图标样式class
           menuShow: true
         },
-        // {
-        //   path: '/institutions/institutions',
-        //   name: '机构管理',
-        //   components: {
-        //     default: Institutions,
-        //     top: TopNav,
-        //     aside: LeftNav
-        //   },
-        //   leaf: true, // 只有一个节点
-        //   iconCls: 'iconfont icon-home', // 图标样式class
-        //   menuShow: true
-        // },
         {
           path: '/institutions/institutions',
           name: '机构管理',
@@ -113,7 +101,6 @@ let router = new Router({
           iconCls: 'iconfont icon-home', // 图标样式class
           menuShow: true,
         },
-
         {
           path: '/attendance/attendance',
           name: '考勤管理',
@@ -126,6 +113,19 @@ let router = new Router({
           iconCls: 'iconfont icon-home', // 图标样式class
           menuShow: true
         },
+        {
+          path: '/attendance/signIn',
+          name: '签到',
+          components: {
+            default: SignIn,
+            top: TopNav,
+            aside: LeftNav
+          },
+          leaf: true, // 只有一个节点
+          iconCls: 'iconfont icon-home', // 图标样式class
+          menuShow: true
+        },
+
         {
           path: '/popupWindow/popupWindow',
           name: '弹窗',

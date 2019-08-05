@@ -3,60 +3,6 @@
  */
 import * as API from './'
 
-// export default {
-//   //登录
-//   login: params => {
-//     // return "success";
-//     return API.GET('/user/login', params)
-//   },
-//   //登出
-//   logout: params => {
-//     return "success";
-//     //return API.GET('/api/users/logout', params)
-//   },
-//
-//   getList: params => {
-//     return API.GET('/user/getList', params)
-//   },
-//
-//   searchList: params => {
-//     return API.GET('/user/searchList', params)
-//   },
-//
-//   deleteUser: params => {
-//     return API.GET('/user/deleteUser', params)
-//   },
-//
-//   getUser: params => {
-//     return API.GET('/user/getUser', params)
-//   },
-//
-//   getInstitutions: params => {
-//     return API.GET('/institutions/getInstitutions', params)
-//   },
-//
-//   updateUser: params => {
-//     return API.POST('/user/updateUser', params)
-//   },
-//
-//   getLogList: params => {
-//     return API.GET('/log/getList', params)
-//   },
-//
-//   deleteLog: params => {
-//     return API.GET('/log/deleteLog', params)
-//   },
-//
-//   searchLogList: params => {
-//     return API.GET('/log/searchLog', params)
-//   },
-//
-//
-// }
-
-
-
-
 export default {
   //登录
   login: params => {
@@ -77,7 +23,7 @@ export default {
     return API.GET('/user/searchList', params)
   },
 
-  SignIn: params => {
+  deleteUser: params => {
     return API.GET('/user/deleteUser', params)
   },
 
@@ -129,7 +75,6 @@ export default {
     return API.POST('/institutions/updateInstitutions', params)
   },
 
-
   removeInstitutions: params => {
     return API.GET('/institutions/removeInstitutions', params)
   },
@@ -140,6 +85,30 @@ export default {
 
   updateAttendance: params => {
     return API.POST('/attendance/updateAttendance', params)
+  },
+
+  searchAttendance: params =>{
+    return  API.GET('/attendance/searchAttendance', params)
+  },
+
+  addInstitutions: params => {
+    return API.GET('/institutions/addInstitutions', params)
+  },
+
+  insertAttendance: params => {
+    return API.GET('/attendance/insertAttendance', params)
+  },
+
+  insertListAttendance: params => {
+    return API.POST('/attendance/insertListAttendance', params)
+  },
+
+  getAllInstitutions :params => {
+    return API.GET('//institutions/getAllInstitutions', params)
+  },
+
+  getUsetListByInstitutionsId: params => {
+    return API.GET('/user/getUsetListByInstitutionsId', params)
   }
 
 }

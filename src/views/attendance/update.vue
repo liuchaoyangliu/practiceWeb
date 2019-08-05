@@ -14,21 +14,6 @@
         <el-input v-model="form.address" autocomplete="off" ></el-input>
       </el-form-item>
 
-      <el-form-item label="电话：" >
-        <el-input v-model="form.phone" autocomplete="off" ></el-input>
-      </el-form-item>
-
-      <el-form-item label="职位：" >
-        <el-input v-model="form.position" autocomplete="off" ></el-input>
-      </el-form-item>
-
-      <el-form-item label="机构：" >
-        <el-input v-model="form.institutionsName" autocomplete="off" ></el-input>
-      </el-form-item>
-
-      <el-form-item label="薪酬：" >
-        <el-input v-model="form.salary" autocomplete="off" ></el-input>
-      </el-form-item>
     </el-form>
 
     <div slot="footer" class="dialog-footer">

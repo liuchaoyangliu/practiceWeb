@@ -8,8 +8,7 @@
         ref="multipleTable"
         :data="tableData"
         tooltip-effect="dark"
-        style="width: 100%"
-        @selection-change="handleSelectionChange">
+        style="width: 100%">
 
         <el-table-column
           prop="workNumber"
@@ -49,13 +48,12 @@
       </el-table>
 
 
-
     <el-col  class="toolbar">
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page="currentPage"
-        :page-sizes="[5, 10, 20, 50]"
+        :page-sizes="[7, 14, 35, 49]"
         :page-size="pageSize"
         layout="total, sizes, prev, pager, next, jumper"
         :total="total">
@@ -110,10 +108,12 @@
 
         this.pageSize = val;
         this.currentPage = 1;
+        this.initData();
       },
 
       handleCurrentChange(val) {
         this.currentPage = val;
+        this.initData();
       },
       handleClose() {
         this.$emit('update:visible', false);

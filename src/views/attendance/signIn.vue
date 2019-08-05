@@ -16,7 +16,7 @@
 
       <template>
         <div style="margin-top: 20px">
-          <el-button @click="toggleSelection(multipleSelection)">确定删除</el-button>
+          <el-button @click="toggleSelection(multipleSelection)">全部签到</el-button>
           <el-button @click="toggleSelection()">取消选择</el-button>
         </div>
         <el-table
@@ -39,41 +39,27 @@
             label="姓名"
             show-overflow-tooltip>
           </el-table-column>
-          <el-table-column
-            prop="age"
-            label="年龄"
-            show-overflow-tooltip>
-          </el-table-column>
-          <el-table-column
-            prop="sex"
-            label="性别"
-            show-overflow-tooltip>
-          </el-table-column>
-          <el-table-column
-            prop="address"
-            label="地址"
-            show-overflow-tooltip>
-          </el-table-column>
-          <el-table-column
-            prop="phone"
-            label="电话"
-            show-overflow-tooltip>
-          </el-table-column>
-          <el-table-column
-            prop="position"
-            label="职位"
-            show-overflow-tooltip>
-          </el-table-column>
+
           <el-table-column label="操作">
             <template slot-scope="scope">
+
               <el-button
                 size="mini"
-                @click="editor(scope.row.workNumber)">编辑
-              </el-button>
+                type="primary"
+                @click="signIn(scope.row.workNumber, '未到')">未到</el-button>
               <el-button
                 size="mini"
-                type="danger"
-                @click="deleteUser(scope.row.workNumber)">删除</el-button>
+                type="primary"
+                @click="signIn(scope.row.workNumber, '以到')">以到</el-button>
+              <el-button
+                size="mini"
+                type="primary"
+                @click="signIn(scope.row.workNumber, '签到')">签到</el-button>
+              <el-button
+                size="mini"
+                type="primary"
+                @click="signIn(scope.row.workNumber, '请假')">请假</el-button>
+
             </template>
           </el-table-column>
         </el-table>
@@ -134,22 +120,35 @@
     },
     methods: {
 
+      signIn(id, mes){
+
+        let params = {
+          workNumber: id,
+          status: mes,
+        };
+        API.insertAttendance(params);
+        this.$Message.success("签到成功");
+      },
+
       showUpdateDialog(){
         this.updateVisible = true;
       },
 
       toggleSelection(rows) {
 
+        console.log(rows);
+
         if (rows) {
-          console.log(rows);
-          API.deleteListUser(rows);
+          API.insertListAttendance(rows);
           rows.forEach(row => {
             this.$refs.multipleTable.toggleRowSelection(row);
           });
+          this.$Message.success("全部签到成功");
           this.getData();
         } else {
           this.$refs.multipleTable.clearSelection();
         }
+
       },
       handleSelectionChange(val) {
         this.multipleSelection = val;
@@ -194,23 +193,6 @@
           _this.currentPage = data.current;
         });
         this.loading = false
-      },
-
-      editor(data){
-        this.workNumber = data;
-        this.showUpdateDialog();
-        console.log(data);
-
-      },
-
-      SignIn(data){
-        let params = {
-          SignIn: data,
-        };
-        console.log(data);
-        API.SignIn(params);
-        this.$Message.success("删除成功");
-        this.getDataOrSearch()
       },
 
       handleSizeChange(val) {

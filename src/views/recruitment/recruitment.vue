@@ -4,19 +4,19 @@
     <el-button type="primary" @click="refresh">刷新</el-button>
 
     <div style="display: flex;justify-content: space-around;flex-wrap: wrap;text-align: left">
-      <el-card style="width: 350px;margin-bottom: 20px" v-for="(item,index) in tableData" :key="item.id">
+      <el-card style="width: 350px;margin-bottom: 20px" v-for="(item,index) in tableData" :key="item.workNumber">
         <div slot="header" class="clearfix">
           <span>{{item.name}}</span>
           <el-button type="text"
                      style="color: #f6061b;margin: 0px;float: right; padding: 3px 0;width: 15px;height:15px"
-                     icon="el-icon-delete" @click="deleteHr(item.id)"></el-button>
+                     icon="el-icon-delete" @click="deleteHr(item.workNumber)"></el-button>
         </div>
         <div>
           <div style="width: 100%;display: flex;justify-content: center">
             <img src="../../assets/timg.jpg" alt="item.name" style="width: 70px;height: 70px;border-radius: 70px">
           </div>
           <div style="margin-top: 20px">
-            <div><span class="user-info">工号:{{item.id}}</span></div>
+            <div><span class="user-info">工号:{{item.workNumber}}</span></div>
             <div><span class="user-info">姓名:{{item.name}}</span></div>
             <div><span class="user-info">性别:{{item.sex}}</span></div>
             <div><span class="user-info">年龄:{{item.age}}</span></div>
@@ -25,8 +25,8 @@
             <div><span class="user-info">职位:{{item.position}}</span></div>
             <div><span class="user-info">薪酬:{{item.salary}}</span></div>
             <div>
-              <el-button type="primary" plain size="mini" @click="employed(item.id)">录用</el-button>
-              <el-button type="primary" plain size="mini" @click="editor(item.id)">修改信息</el-button></div>
+              <el-button type="primary" plain size="mini" @click="employed(item.workNumber)">录用</el-button>
+              <el-button type="primary" plain size="mini" @click="editor(item.workNumber)">修改信息</el-button></div>
           </div>
         </div>
       </el-card>
@@ -83,7 +83,7 @@
       async employed(data){
         console.log(data);
         let params = {
-          id: data,
+          workNumber: data,
         };
         await API.acceptedUser(params);
 
@@ -103,10 +103,13 @@
         });
       },
       async deleteHr(data){
+
+        console.log(data);
+
         let params = {
-          SignIn: data,
+          deleteUser: data,
         };
-        await API.SignIn(params);
+        await API.deleteUser(params);
         console.log(data);
         this.initData();
       },

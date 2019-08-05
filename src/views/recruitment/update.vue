@@ -7,7 +7,7 @@
     <el-form :model="form" label-width="70px">
 
       <el-form-item label="工号：" >
-        <el-input v-model="form.id" autocomplete="off" readonly="true"></el-input>
+        <el-input v-model="form.workNumber" autocomplete="off" readonly="true"></el-input>
       </el-form-item>
       <el-form-item label="姓名：" >
         <el-input v-model="form.name" autocomplete="off" ></el-input>
@@ -53,12 +53,12 @@
         type: Boolean,
         default: false
       },
-      id: ''
+      workNumber: ''
     },
     data() {
       return {
         form: {
-          id: '',
+          workNumber: '',
           name: '',
           age: '1',
           sex: '',
@@ -81,10 +81,10 @@
       async initData(){
         let _this = this;
         let params = {
-          id: _this.id,
+          workNumber: _this.workNumber,
         };
         await API.getUser(params).then(function (data) {
-          _this.form.id = data.id;
+          _this.form.workNumber = data.workNumber;
           _this.form.name = data.name;
           _this.form.age = data.age;
           _this.form.sex = data.sex;

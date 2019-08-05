@@ -3,8 +3,8 @@
   <div style="margin-top: 10px" v-loading="fullloading">
 
     <el-button type="primary" @click="refresh">刷新</el-button>
-
     <div style="display: flex;justify-content: space-around;flex-wrap: wrap;text-align: left">
+
       <el-card style="width: 280px; margin-bottom: 20px" v-for="(item,index) in tableData" :key="item.id">
         <div slot="header" class="clearfix">
           <span>{{item.name}}</span>
@@ -26,8 +26,9 @@
         </div>
       </el-card>
 
-      <el-col :span="24" class="toolbar">
-        <el-pagination
+    <el-col :span="24" class="toolbar">
+      <el-button type="primary" plain @click="addInstitutions">增加机构</el-button>
+    <el-pagination
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
           :current-page="currentPage"
@@ -36,8 +37,11 @@
           layout="total, sizes, prev, pager, next, jumper"
           :total="total">
         </el-pagination>
-      </el-col>
+    </el-col>
     </div>
+
+
+  <template>
     <update ref="update"
             v-if="updateVisible"
             :visible.sync="updateVisible"
@@ -51,15 +55,23 @@
 
     </detail>
 
+    <add ref="add"
+         v-if="addVisible"
+         :visible.sync="addVisible"
+         :id.sync="id">
+
+    </add>
+  </template>
   </div>
 </template>
+
 <script>
   import Update from './update'
   import Add from './add'
   import Detail from './detail'
   import API from '../../api/api_user'
   export default{
-    components: {Detail, Update},
+    components: {Add, Detail, Update},
     data(){
       return {
         id: '',
@@ -91,6 +103,11 @@
         this.detailVisible = true;
 
       },
+
+      addInstitutions(){
+        this.addVisible = true;
+      },
+
       initData(){
         let _this = this;
         let params = {
@@ -131,7 +148,8 @@
       },
       refresh(){
         this.initData()
-      }
+      },
+
     }
   }
 </script>

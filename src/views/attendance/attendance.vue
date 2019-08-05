@@ -6,11 +6,12 @@
       <el-col :span="24" class="toolbar">
         <el-form :inline="true" :model="filters">
           <el-form-item>
-            <el-input v-model="filters.keyword" placeholder="请输入关键字搜索" auto-complete="off" @keyup.enter.native="handleSearch"></el-input>
+            <el-input v-model="filters.keyword" placeholder="请输入工号或时间搜索" auto-complete="off" @keyup.enter.native="handleSearch"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" size="medium" v-on:click="handleSearch">查询</el-button>
           </el-form-item>
+
         </el-form>
       </el-col>
 
@@ -22,7 +23,6 @@
           style="width: 100%"
           @selection-change="handleSelectionChange">
           <el-table-column
-            type="selection"
             width="55">
           </el-table-column>
 
@@ -39,15 +39,17 @@
           <el-table-column
             prop="time"
             label="时间"
-            width="120">
+            width="180">
           </el-table-column>
           <el-table-column
             prop="status"
-            label="状态">
+            label="状态"
+            width="120">
           </el-table-column>
           <el-table-column
             prop="note"
-            label="备注">
+            label="备注"
+            width="250">
           </el-table-column>
 
           <el-table-column label="操作">
@@ -97,7 +99,6 @@
     name: 'plan',
     data (){
       return {
-
         id: '',
         loading: false,
         search: '',
@@ -111,39 +112,49 @@
         tableData: [],
         multipleSelection: [],
         updateVisible: false,
+
+        allInstitutions: []
+
       }
     },
 
     created () {
-      this.getData()
+      this.getData();
+
     },
     methods: {
 
+      getAllInstitutions(){
+        let _this = this;
+        API.getAllInstitutions().then(function (data) {
+          _this.allInstitutions = data;
+        });
+      },
       handleSelectionChange(val) {
         this.multipleSelection = val;
       },
 
       getDataOrSearch(){
 
-        // if(this.filters.keyword == null || this.filters.keyword == ''){
-        //   this.getData();
-        // }else {
-        //   this.loading = true;
-        //   console.log(this.filters.keyword);
-        //   let params = {
-        //     page: this.currentPage,
-        //     pageSize: this.pageSize,
-        //     search: this.filters.keyword
-        //   };
-        //   console.log(params);
-        //   let _this = this;
-        //   API.searchList(params).then(function (data) {
-        //     _this.tableData = data.records;
-        //     _this.total = data.total;
-        //     _this.currentPage = data.current;
-        //   });
-        //   this.loading = false
-        // }
+        if(this.filters.keyword == null || this.filters.keyword == ''){
+          this.getData();
+        }else {
+          this.loading = true;
+          console.log(this.filters.keyword);
+          let params = {
+            page: this.currentPage,
+            pageSize: this.pageSize,
+            search: this.filters.keyword
+          };
+          console.log(params);
+          let _this = this;
+          API.searchAttendance(params).then(function (data) {
+            _this.tableData = data.records;
+            _this.total = data.total;
+            _this.currentPage = data.current;
+          });
+          this.loading = false
+        }
 
       },
 
@@ -162,6 +173,8 @@
           _this.total = data.total;
           _this.currentPage = data.current;
         });
+
+        this.getAllInstitutions();
         this.loading = false
       },
 
@@ -200,7 +213,7 @@
         };
         console.log(params);
         let _this = this;
-        API.searchList(params).then(function (data) {
+        API.searchAttendance(params).then(function (data) {
           _this.tableData = data.records;
           _this.total = data.total;
           _this.currentPage = data.current;
