@@ -20,13 +20,13 @@ const data = [
     type: '司机',
     status: '在职'
   }
-]
+];
 
 const state = {
   collapsed: false,
   topNavState: 'home',
   leftNavState: 'home'
-}
+};
 
 /*从本地存储读取数据*/
 for (var item in state) {

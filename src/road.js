@@ -3,4 +3,4 @@
  */
 import Vue from 'vue'
 
-export let road = new Vue()
+export let road = new Vue();

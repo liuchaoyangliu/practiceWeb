@@ -12,12 +12,12 @@ import '@/assets/iconfont.css'
 import '@/assets/css/style.css'
 import 'iview/dist/styles/iview.css'
 
-Vue.config.productionTip = false
-Vue.use(ElementUI)
-Vue.use(iView)
+Vue.config.productionTip = false;
+Vue.use(ElementUI);
+Vue.use(iView);
 
 Vue.filter('formatDateTime', function (value) {
-  if (!value) return ''
+  if (!value) return '';
   let date = new Date(value);
   let y = date.getFullYear() + '/';
   let mon = (date.getMonth() + 1) + '/';
@@ -30,4 +30,4 @@ new Vue({
   store,
   el: '#app',
   render: h => h(App)
-})
+});
