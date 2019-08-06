@@ -57,11 +57,7 @@
               <el-button
                 size="mini"
                 type="primary"
-                @click="updateStatus(scope.row.id, '未到')">未到</el-button>
-              <el-button
-                size="mini"
-                type="primary"
-                @click="updateStatus(scope.row.id, '以到')">以到</el-button>
+                @click="updateStatus(scope.row.id, '缺勤')">缺勤</el-button>
               <el-button
                 size="mini"
                 type="primary"

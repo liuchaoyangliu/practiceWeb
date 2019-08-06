@@ -15,6 +15,8 @@ import Attendance from '@/views/attendance/attendance.vue'
 import SystemLog from '@/views/systemLog/systemLog.vue'
 import Recruitment from '@/views/recruitment/recruitment.vue'
 import SignIn from '@/views/attendance/signIn.vue'
+import PersonalInfo from '@/views/personnel/PersonalInfo.vue'
+
 
 import PopupWindow from '@/views/popupWindow/mission.vue'
 
@@ -58,6 +60,18 @@ let router = new Router({
           name: '人员管理',
           components: {
             default: Personnel,
+            top: TopNav,
+            aside: LeftNav
+          },
+          leaf: true, // 只有一个节点
+          iconCls: 'iconfont icon-home', // 图标样式class
+          menuShow: true
+        },
+        {
+          path: '/personnel/personalInfo',
+          name: '个人信息',
+          components: {
+            default: PersonalInfo,
             top: TopNav,
             aside: LeftNav
           },
@@ -126,18 +140,18 @@ let router = new Router({
           menuShow: true
         },
 
-        {
-          path: '/popupWindow/popupWindow',
-          name: '弹窗',
-          components: {
-            default: PopupWindow,
-            top: TopNav,
-            aside: LeftNav
-          },
-          leaf: true, // 只有一个节点
-          iconCls: 'iconfont icon-home', // 图标样式class
-          menuShow: true
-        }
+        // {
+        //   path: '/popupWindow/popupWindow',
+        //   name: '弹窗',
+        //   components: {
+        //     default: PopupWindow,
+        //     top: TopNav,
+        //     aside: LeftNav
+        //   },
+        //   leaf: true, // 只有一个节点
+        //   iconCls: 'iconfont icon-home', // 图标样式class
+        //   menuShow: true
+        // }
       ]
     }
 

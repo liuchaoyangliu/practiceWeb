@@ -109,6 +109,10 @@ export default {
 
   getUsetListByInstitutionsId: params => {
     return API.GET('/user/getUsetListByInstitutionsId', params)
+  },
+
+  getCurrentUser: params => {
+    return API.GET('/user/getCurrentUser', params)
   }
 
 }

@@ -13,19 +13,6 @@
         <el-row v-show="$store.state.topNavState==='home'">
           <el-col :span="24">
             <el-menu :default-active="defaultActiveIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" :router="true">
-<!--              <el-menu-item index="/">工作台</el-menu-item>-->
-<!--              <el-menu-item index="/enterpriseManager">企业管理</el-menu-item>-->
-<!--              <el-menu-item index="/orderManager">订单管理</el-menu-item>-->
-<!--              <el-menu-item index="/systemManager">系统管理</el-menu-item>-->
-            </el-menu>
-          </el-col>
-        </el-row>
-        <el-row v-show="$store.state.topNavState==='enterprise'">
-          <el-col :span="24">
-            <el-menu :default-active="defaultActiveIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" :router="true">
-              <el-menu-item index="/enterpriseManager">企业信息</el-menu-item>
-              <el-menu-item index="/vehicleManager">车辆信息</el-menu-item>
-              <el-menu-item index="/deptManager">组织架构</el-menu-item>
             </el-menu>
           </el-col>
         </el-row>

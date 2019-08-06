@@ -46,11 +46,7 @@
               <el-button
                 size="mini"
                 type="primary"
-                @click="signIn(scope.row.workNumber, '未到')">未到</el-button>
-              <el-button
-                size="mini"
-                type="primary"
-                @click="signIn(scope.row.workNumber, '以到')">以到</el-button>
+                @click="signIn(scope.row.workNumber, '缺勤')">缺勤</el-button>
               <el-button
                 size="mini"
                 type="primary"

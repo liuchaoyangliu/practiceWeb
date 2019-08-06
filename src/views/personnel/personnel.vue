@@ -138,18 +138,19 @@
         this.updateVisible = true;
       },
 
-      toggleSelection(rows) {
+      async toggleSelection(rows) {
 
         if (rows) {
           console.log(rows);
-          API.deleteListUser(rows);
+          await API.deleteListUser(rows);
           rows.forEach(row => {
             this.$refs.multipleTable.toggleRowSelection(row);
           });
           this.getData();
         } else {
           this.$refs.multipleTable.clearSelection();
-        }
+        };
+        this.getData();
       },
       handleSelectionChange(val) {
         this.multipleSelection = val;
@@ -203,14 +204,14 @@
 
       },
 
-      SignIn(data){
+      async deleteUser(data){
         let params = {
-          SignIn: data,
+          deleteUser: data,
         };
         console.log(data);
-        API.SignIn(params);
+        await API.deleteUser(params);
         this.$Message.success("删除成功");
-        this.getDataOrSearch()
+        await this.getDataOrSearch()
       },
 
       handleSizeChange(val) {

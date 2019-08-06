@@ -104,7 +104,7 @@
       handleClose() {
         this.$emit('update:visible', false);
       },
-      updateInstitutions(){
+      updateUser(){
         console.log(this.form);
 
         let params = {
@@ -120,7 +120,7 @@
           salary: this.form.salary,
           flag: this.form.flag
         };
-        API.updateInstitutions(params);
+        API.updateUser(params);
 
         this.$Message.success("修改成功");
       }
